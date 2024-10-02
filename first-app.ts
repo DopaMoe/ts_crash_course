@@ -23,18 +23,18 @@ user = {
     age: 30,
     isAdmin: true,
     id: 1
-}
+};
 
 // array types
 
 let hobbies: string[];
 // number[], boolean[], {name:string, age: number}[]
 
-hobbies = ["Sports", "Guitar", "VideoGames", "De-loading"]
+hobbies = ["Sports", "Guitar", "VideoGames", "De-loading"];
 
 // functions param and return types
 function add(a: number, b: number): number {
-    return a + b
+    return a + b;
 }
 
 // custom types / custom aliases
@@ -48,8 +48,8 @@ interface Credentials {
 
 let creds: { password: string; email: string } = {
     email: "hola",
-    password: "erawr"
-}
+    password: "password"
+};
 // interface types vs custom alias 'type'
 // types alias can be used for both objects and primitive type also you can use union types on it
 // whereas interfaces are explicit used for objects, and it will help if you want to implement an interface on a class
@@ -58,23 +58,23 @@ class AuthCreds implements Credentials {
     email: string;
     password: string;
     userName: string;
-    newProp: string
+    newProp: string;
     // both email and password have to be passed because Credentials class implementation
 }
 
 // another reason for using interface also is declaration merging
 // which is an interface with props in an easy way
 interface Credentials {
-    newProp: string
+    newProp: string;
 }
 
 
 //defining function type
 function calculate(a: number, b: number, calcFn: AddFn) {
-    calcFn(a, b)
+    calcFn(a, b);
 }
 
-calculate(5, 3, add)
+calculate(5, 3, add);
 
 
 // Merging Types
@@ -102,17 +102,17 @@ admin = {
 // type merge interface syntax
 
 interface AdminInterfaceType {
-    permission: string[]
+    permission: string[];
 };
 
 interface AppUserInterfaceType {
-    userName: string
+    userName: string;
 }
 
 interface AppAdminInterface extends AdminInterfaceType, AppUserInterfaceType {
 };
 
-let adminInterface: AppAdminInterface
+let adminInterface: AppAdminInterface;
 
 adminInterface = {
     permission: ["login"],
@@ -124,16 +124,16 @@ adminInterface = {
 type Role = 'admin' | 'user' | 'editor';
 let role: Role;
 
-role = "admin"
-role = "user"
-role = "editor"
+role = "admin";
+role = "user";
+role = "editor";
 // role = "abc" This will give an Error
 
 // type guards & type narrowing
-// basicaly, its about making sure that the params are of the type & value you need
+// basically, it's about making sure that the params are of the type & value you need
 function typeGuards(action: number | string, role: Role) {
     if (typeof action === 'string' && role === "admin") {
-        console.log("Perform ACtion")
+        console.log("Perform Action");
     }
 }
 
@@ -162,7 +162,7 @@ let textStorage: DataStorage<string> = {
     genericSumFn(data) {
         this.storage.push(data);
     }
-}
+};
 
 // generic functions
 
@@ -173,7 +173,7 @@ function merge<T, U>(a: T, b: U) {
     };
 };
 
-let newUser = merge({name: "Mohammad"}, {age:30});
+let newUser = merge({name: "Mohammad"}, {age: 30});
 
 
 
