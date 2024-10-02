@@ -47,7 +47,7 @@ interface Credentials {
 }
 
 let creds: { password: string; email: string } = {
-    email:"hola",
+    email: "hola",
     password: "erawr"
 }
 // interface types vs custom alias 'type'
@@ -131,20 +131,49 @@ role = "editor"
 
 // type guards & type narrowing
 // basicaly, its about making sure that the params are of the type & value you need
-function typeGuards(action: number | string, role: Role){
-    if(typeof action === 'string' && role === "admin"){
+function typeGuards(action: number | string, role: Role) {
+    if (typeof action === 'string' && role === "admin") {
         console.log("Perform ACtion")
     }
 }
+
 // note you can not type guard a custom Type
 // such as
-if(typeof user === User){
+if (typeof user === User) {
     //  this will produce an error at runtime, because there is no equivalent to that in js when compiling
     // however you can check if a prop is inside the user object like
-    if("permission" in user){
+    if ("permission" in user) {
         // this will work
     }
 }
+
+
+// generic types
+// used when you are not sure what you type of data you are accepting
+
+type DataStorage<T> = {
+    storage: T[]; //
+    genericSumFn: (data: T) => void;// you can add functions
+}
+
+// usage defined DataStorage of strings
+let textStorage: DataStorage<string> = {
+    storage: [],
+    genericSumFn(data) {
+        this.storage.push(data);
+    }
+}
+
+// generic functions
+
+function merge<T, U>(a: T, b: U) {
+    return {
+        ...a,
+        ...b
+    };
+};
+
+let newUser = merge({name: "Mohammad"}, {age:30});
 
 
 
