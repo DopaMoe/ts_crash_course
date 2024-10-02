@@ -103,7 +103,7 @@ admin = {
 
 interface AdminInterfaceType {
     permission: string[]
-}
+};
 
 interface AppUserInterfaceType {
     userName: string
@@ -121,9 +121,31 @@ adminInterface = {
 
 // adding literal types
 // used when you do not want to assign verbose strings in a var
-let role: 'admin' | 'user' | 'editor';
+type Role = 'admin' | 'user' | 'editor';
+let role: Role;
 
 role = "admin"
 role = "user"
 role = "editor"
 // role = "abc" This will give an Error
+
+// type guards & type narrowing
+// basicaly, its about making sure that the params are of the type & value you need
+function typeGuards(action: number | string, role: Role){
+    if(typeof action === 'string' && role === "admin"){
+        console.log("Perform ACtion")
+    }
+}
+// note you can not type guard a custom Type
+// such as
+if(typeof user === User){
+    //  this will produce an error at runtime, because there is no equivalent to that in js when compiling
+    // however you can check if a prop is inside the user object like
+    if("permission" in user){
+        // this will work
+    }
+}
+
+
+
+
