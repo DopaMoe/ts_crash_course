@@ -63,7 +63,7 @@ class AuthCreds implements Credentials {
 }
 
 // another reason for using interface also is declaration merging
-// which is an interface with props in an easy way
+// which is adding props in an easy way
 interface Credentials {
     newProp: string;
 }
