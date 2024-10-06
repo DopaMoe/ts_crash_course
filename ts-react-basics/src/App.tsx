@@ -2,6 +2,7 @@ import {useState} from "react";
 import Header from "./components/Header.tsx";
 import CourseGoalList from "./components/CourseGoalList.tsx";
 import goalsImg from "./assets/goals.jpg";
+import NewGoal from "./components/NewGoal.tsx";
 
 export interface Goals {
     id: number;
@@ -15,16 +16,20 @@ export default function App() {
     // second is a method that updates that value
     const [goals, setGoals] = useState<Goals[]>([]);
 
-    function addGoalHandler() {
+    function addGoalHandler(goal: string, summary: string) {
         // using set function to update the state
         return setGoals(pervGoals => {
             const newGoal: Goals = {
                 id: Math.random(),
-                title: "Learn React JS",
-                description: "Learn it in depth"
+                title: goal,
+                description: summary
             };
             return [...pervGoals, newGoal];
         });
+    }
+
+    function deleteGoalHandler(goalId: number) {
+        setGoals(prevGoals => prevGoals.filter(goal => goal.id !== goalId));
     }
 
     return (
@@ -32,8 +37,8 @@ export default function App() {
             <Header image={{src: goalsImg, alt: "a list of goals"}}>
                 <h1>Your Goals</h1>
             </Header>
-            <button onClick={addGoalHandler}>Add Goal</button>
-            <CourseGoalList goals={goals}/>
+            <NewGoal onAddGoal={addGoalHandler}/>
+            <CourseGoalList goals={goals} onDeleteGoal={deleteGoalHandler}/>
         </main>
     );
 }

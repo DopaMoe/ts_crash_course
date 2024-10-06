@@ -7,8 +7,10 @@ import {
 } from "react";
 
 interface CourseGoalProps {
+    id: number;
     title: string;
     children: ReactNode;
+    onDelete: (id:number) => void;
 }
 
 // alternative way to define properties with childrens
@@ -16,14 +18,14 @@ interface CourseGoalProps {
 // type CourseGoalProps = PropsWithChildren<{ title: string }>;
 
 
-export default function CourseGoal({title, children}: CourseGoalProps) {
+export default function CourseGoal({title, children, id, onDelete}: CourseGoalProps) {
     return (
         <article>
             <div>
                 <h2>{title}</h2>
                 {children}
             </div>
-            <button>Delete</button>
+            <button onClick={() => onDelete(id)}>Delete</button>
         </article>
     );
 }
