@@ -1,4 +1,5 @@
-import {type FC, type ReactNode} from "react";
+import {type ReactNode} from "react";
+
 interface HeaderProps {
     image: {
         src: string;
@@ -7,8 +8,7 @@ interface HeaderProps {
     children: ReactNode;
 }
 
-// arrow function component
-const Header: FC<HeaderProps> = ({image, children}) => {
+export default function Header({image, children}: HeaderProps) {
     return (
         <header>
             {/*<img src={image.src} alt={image.alt}/>*/}
@@ -18,4 +18,3 @@ const Header: FC<HeaderProps> = ({image, children}) => {
         </header>
     );
 };
-export default Header;
