@@ -1,9 +1,9 @@
 import {useState} from "react";
-import CourseGoal from "./components/CourseGoal.tsx";
 import Header from "./components/Header.tsx";
+import CourseGoalList from "./components/CourseGoalList.tsx";
 import goalsImg from "./assets/goals.jpg";
 
-interface CourseGoalInterface {
+export interface Goals {
     id: number;
     title: string;
     description: string;
@@ -13,12 +13,12 @@ export default function App() {
     // useState returns an array of 2 elements
     // first element is the current values that needs to be updated
     // second is a method that updates that value
-    const [goals, setGoals] = useState<CourseGoalInterface[]>([]);
+    const [goals, setGoals] = useState<Goals[]>([]);
 
     function addGoalHandler() {
         // using set function to update the state
         return setGoals(pervGoals => {
-            const newGoal: CourseGoalInterface = {
+            const newGoal: Goals = {
                 id: Math.random(),
                 title: "Learn React JS",
                 description: "Learn it in depth"
@@ -33,19 +33,7 @@ export default function App() {
                 <h1>Your Goals</h1>
             </Header>
             <button onClick={addGoalHandler}>Add Goal</button>
-            {/*Whenever rendering a list use .map*/}
-            <ul>
-                {
-                    goals.map(goal => (
-                            <li key={goal.id}>
-                                <CourseGoal title={goal.title}>
-                                    <p>{goal.description}</p>
-                                </CourseGoal>
-                            </li>
-                        )
-                    )
-                }
-            </ul>
+            <CourseGoalList goals={goals}/>
         </main>
     );
 }
