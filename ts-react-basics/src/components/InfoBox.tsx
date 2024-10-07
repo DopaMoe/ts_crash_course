@@ -1,5 +1,6 @@
 import {type ReactNode} from "react";
 
+// conditional props
 interface HintInfoBox {
     mode: 'hint';
     children: ReactNode;
@@ -12,7 +13,7 @@ interface WarningInfoBoxProps {
 }
 
 type InfoBoxProps = HintInfoBox | WarningInfoBoxProps
-
+// conditional props
 
 export default function InfoBox(props: InfoBoxProps) {
     const {mode, children} = props
