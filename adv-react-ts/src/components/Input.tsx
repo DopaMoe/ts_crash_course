@@ -1,5 +1,6 @@
 import {type ComponentPropsWithoutRef} from "react";
 
+// merging types
 interface InputProps extends ComponentPropsWithoutRef<'input'>{
     label: string;
     id: string;
