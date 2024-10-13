@@ -1,17 +1,18 @@
-import {type ComponentPropsWithoutRef} from "react";
+import {type ComponentPropsWithoutRef, forwardRef} from "react";
 
 // merging types
-interface InputProps extends ComponentPropsWithoutRef<'input'>{
+interface InputProps extends ComponentPropsWithoutRef<'input'> {
     label: string;
     id: string;
 }
 
-export default function Input({label, id, ...props}: InputProps) {
+const Input = forwardRef<HTMLInputElement, InputProps>(function Input({label, id, ...props}, ref) {
     return (
         <p>
             <label htmlFor={id}>{label}</label>
-            <input id={id} type="text" {...props}/>
+            <input id={id} type="text" {...props} ref={ref}/>
         </p>
     );
+});
 
-}
+export default Input;
