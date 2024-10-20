@@ -1,9 +1,9 @@
-import {type ComponentPropsWithoutRef} from "react";
+import { type ComponentPropsWithoutRef } from "react";
 
 type ButtonProps = ComponentPropsWithoutRef<'button'> & {
     // href is optional because in button element you cannot add this props
     // so this is like a way to distinguish if if this is a button element or anchor
-     href?: never;
+    href?: never;
 }
 
 type AnchorProps = ComponentPropsWithoutRef<'a'> & {
